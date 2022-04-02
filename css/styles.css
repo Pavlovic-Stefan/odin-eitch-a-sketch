@@ -4,7 +4,6 @@
     font-family: 'Roboto', sans-serif;
 }
 body {
-    padding: 20px;
     background-color: rgb(206, 206, 206);
 }
 
@@ -132,6 +131,17 @@ output {
 
 .just-the-square {
     
+}
+
+h1 {
+    text-align: center;
+    padding: 32px;
+    font-size: 48px;
+    font-weight: 900;
+}
+
+h6 {
+    text-align: center;
 }
 
 input[type=range] {
