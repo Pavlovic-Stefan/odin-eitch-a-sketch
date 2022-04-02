@@ -10,6 +10,7 @@ let blue = 0;
 let r = 0;
 let g = 0;
 let b = 0;
+let colorStep = 25;
 
 function squareGenerator (numberOfSquares) {
     lastArea = numberOfSquares;
@@ -54,12 +55,12 @@ function currentColor (){
         b=0;
     }
 
-    if ( r==1 && b==0 && g==0){green+=50}
-    else if (r==1 && g==1){red-=50}
-    else if (r==0 && g==1 && b==0){blue+=50}
-    else if (g==1 && b==1){green-=50}
-    else if (g==0 && b==1 && r==0){red+=50}
-    else if (r==1 && b==1){blue-=50}
+    if ( r==1 && b==0 && g==0){green+=colorStep}
+    else if (r==1 && g==1){red-=colorStep}
+    else if (r==0 && g==1 && b==0){blue+=colorStep}
+    else if (g==1 && b==1){green-=colorStep}
+    else if (g==0 && b==1 && r==0){red+=colorStep}
+    else if (r==1 && b==1){blue-=colorStep}
 
 
     if (rain==1){
