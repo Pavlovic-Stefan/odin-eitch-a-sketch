@@ -2,6 +2,7 @@ const squaresContainer = document.querySelector(".squares-container");
 const squaresSubContainer = document.createElement('div')
 const squares = document.createElement('div')
 
+
 function squareGenerator (numberOfSquares) {
     let num = 640 / numberOfSquares - 1 + 'px';
     while (squaresContainer.firstChild) {
@@ -17,6 +18,11 @@ function squareGenerator (numberOfSquares) {
         }
 
     }
+}
+
+function currentColor (){
+    let color = document.querySelector(".buttons-holder > input").value;
+    return color;
 }
 
 document.addEventListener('DOMContentLoaded', () => squareGenerator(16));
