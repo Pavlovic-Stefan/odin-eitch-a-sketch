@@ -130,6 +130,10 @@ output {
     border-color:rgb(126, 126, 126);
 }
 
+.just-the-square {
+    
+}
+
 input[type=range] {
     height: 30px;
     -webkit-appearance: none;
