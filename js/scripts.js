@@ -4,6 +4,9 @@ const squares = document.createElement('div')
 
 function squareGenerator (numberOfSquares) {
     let num = 640 / numberOfSquares - 1 + 'px';
+    while (squaresContainer.firstChild) {
+        squaresContainer.removeChild(squaresContainer.firstChild);
+    }
     squaresContainer.classList.add('squares-container-border')
     for (let i = 0 ; i < numberOfSquares ; i++) {
         const squaresSubContainer = document.createElement('div')
@@ -15,5 +18,3 @@ function squareGenerator (numberOfSquares) {
 
     }
 }
-
-//(640 / &${numberOfSquares} - 1)px
