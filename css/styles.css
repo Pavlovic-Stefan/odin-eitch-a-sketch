@@ -1,16 +1,40 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
 }
 body {
     padding: 20px;
+    background-color: rgb(206, 206, 206);
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    margin-left: -160px;
+}
+
+.buttons-holder {
+    padding: 16px;
+}
+
+.button-holder {
+    padding: 8px 0;
+}
+
+button {
+    font-size: 16px;
+    height: 24px;
+    width: 128px;
 }
 
 .squares-container-border {
     border-width: 1px 0px 0px 1px; /* top right bottom left */
     border-style: solid;
-    border-color: black;
-    width:fit-content
+    border-color: rgb(177, 177, 177);
+    width:fit-content;
+    -webkit-box-shadow: 0px 0px 8px 8px rgba(0,0,0,0.15); 
+    box-shadow: 0px 0px 8px 8px rgba(0,0,0,0.15);
 }
 
 .squares-container > div {
@@ -20,7 +44,12 @@ body {
 }
 
 .squares-container > div > div {
+    background-color: white;
     border-width: 0px 1px 1px 0px;
     border-style: solid;
-    border-color: black;
+    border-color: rgb(177, 177, 177);
+}
+
+.picker {
+    width: 128px;
 }
