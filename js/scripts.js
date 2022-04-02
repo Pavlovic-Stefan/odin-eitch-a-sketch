@@ -25,4 +25,19 @@ function currentColor (){
     return color;
 }
 
+const clear = document.querySelector('.clear');
+clear.addEventListener('click', ()=>squareGenerator(64));
+
+
+
+
+
+
+
+
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => squareGenerator(16));
