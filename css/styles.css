@@ -20,8 +20,6 @@ body {
 }
 
 .squares-container > div > div {
-    width:15px;
-    height:15px;
     border-width: 0px 1px 1px 0px;
     border-style: solid;
     border-color: black;
