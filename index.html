@@ -14,13 +14,23 @@
 <body>
     <div class="content">
         <div class="buttons-holder">
+            <div class="colors">
+                <div class="color-text">Color Picker</div>
+                <input type="color" class="picker">
+            </div>
 
-            <input type="color" class="picker">
-            <div class="button-holder"><button class="color">Color Picker</button></div>
-            <div class="button-holder"><button class="eraser">Eraser</button></div>
-            <div class="button-holder"><button class="rainbow">Rainbow</button></div>
-            <div class="button-holder"><button class="clear">Clear</button></div>
-            <div class="button-holder"><button class="size">Set Size</button></div>
+            <div class="modes">
+                <p>MODE</p>
+                <div class="button-holder"><button class="color" type="color">Color</button></div>
+                <div class="button-holder"><button class="eraser">Eraser</button></div>
+                <div class="button-holder"><button class="rainbow">Rainbow</button></div>
+            </div>
+            <output>16</output>
+            <input type="range" class="range" value="16" min="1" max="128" oninput="this.previousElementSibling.value = this.value">
+            
+            <div class="size-container"><div class="button-holder"><button class="size">Set Size</button></div></div>
+
+            <div class="clear-grid"><div class="button-holder"><button class="clear">Clear</button></div></div>
             
         </div>
 
