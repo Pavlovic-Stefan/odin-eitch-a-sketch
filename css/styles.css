@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    padding: 20px;
+}
+
+.squares-container-border {
+    border-width: 1px 0px 0px 1px; /* top right bottom left */
+    border-style: solid;
+    border-color: black;
+    width:fit-content
+}
+
+.squares-container > div {
+    height:fit-content;
+    width:fit-content;
+    display: flex;
+}
+
+.squares-container > div > div {
+    width:15px;
+    height:15px;
+    border-width: 0px 1px 1px 0px;
+    border-style: solid;
+    border-color: black;
+}
