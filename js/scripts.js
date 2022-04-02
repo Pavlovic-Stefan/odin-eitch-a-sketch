@@ -2,7 +2,7 @@ const squaresContainer = document.querySelector(".squares-container");
 const squaresSubContainer = document.createElement('div')
 const squares = document.createElement('div')
 let lastArea = 16;
-
+let er = 0;
 
 function squareGenerator (numberOfSquares) {
     lastArea = numberOfSquares;
@@ -21,14 +21,20 @@ function squareGenerator (numberOfSquares) {
         }
 
     }
+    isolatedColor = currentColor;
     squaresColor = document.querySelectorAll(".just-the-square");
     squaresColor.forEach(item=>{item.addEventListener('mouseover', ()=>item.setAttribute('style', `height:${num};width:${num};background-color:${currentColor()}`))});
 }
 
 function currentColor (){
     let color = document.querySelector(".picker").value;
+    if (er==1){
+        return '#ffffff';        
+    }
     return color;
 }
+
+let isolatedColor = currentColor()
 
 const clear = document.querySelector('.clear');
 clear.addEventListener('click', ()=>squareGenerator(lastArea));
@@ -38,12 +44,13 @@ const size = document.querySelector('.size');
 size.addEventListener('click', ()=>squareGenerator(range.value));
 
 const colorButton = document.querySelector('.color');
-//colorButton.addEventListener('click', ()=>/*add function here */);
+colorButton.addEventListener('click', ()=>er=0);
 
 let squaresColor = document.querySelectorAll(".just-the-square");
 squaresColor.forEach(item=>{item.addEventListener('click', () => {console.log(1)})});
 
-
+const eraser = document.querySelector('.eraser');
+eraser.addEventListener('click', ()=>er=1);
 
 
 
