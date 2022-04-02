@@ -18,3 +18,5 @@ function squareGenerator (numberOfSquares) {
 
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => squareGenerator(16));
