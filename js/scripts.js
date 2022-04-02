@@ -1,9 +1,11 @@
 const squaresContainer = document.querySelector(".squares-container");
 const squaresSubContainer = document.createElement('div')
 const squares = document.createElement('div')
+let lastArea = 16;
 
 
 function squareGenerator (numberOfSquares) {
+    lastArea = numberOfSquares;
     let num = 640 / numberOfSquares - 1 + 'px';
     while (squaresContainer.firstChild) {
         squaresContainer.removeChild(squaresContainer.firstChild);
@@ -26,7 +28,7 @@ function currentColor (){
 }
 
 const clear = document.querySelector('.clear');
-clear.addEventListener('click', ()=>squareGenerator(64));
+clear.addEventListener('click', ()=>squareGenerator(lastArea));
 
 
 
