@@ -31,6 +31,13 @@ body {
     padding: 8px 0;
 }
 
+.rainbow:focus {
+  background: rgb(255,0,0);
+  border: 1px solid rgb(126, 126, 126);
+  border-radius: 2px;
+  background: linear-gradient(80deg, rgba(255,0,0,0.5) 0%, rgba(255,125,0,0.5) 10%, rgba(255,255,0,0.5) 20%, rgba(125,255,0,0.5) 30%, rgba(0,255,0,0.5) 40%, rgba(0,255,255,0.5) 50%, rgba(0,0,255,0.5) 60%, rgba(125,0,255,0.5) 70%, rgba(255,0,255,0.5) 80%, rgba(255,0,125,0.5) 90%);
+}
+
 button {
     font-size: 16px;
     height: 24px;
