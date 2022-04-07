@@ -31,7 +31,34 @@ function squareGenerator (numberOfSquares) {
     }
     isolatedColor = currentColor;
     squaresColor = document.querySelectorAll(".just-the-square");
-    squaresColor.forEach(item=>{item.addEventListener('mouseover', ()=>item.setAttribute('style', `height:${num};width:${num};background-color:${currentColor()}`))});
+    squaresColor.forEach(item=>{item.addEventListener('mousedown', ()=>{
+        addMouseOverEvent(num);
+        item.setAttribute('style', `height:${num};width:${num};background-color:${currentColor()}`);
+    } )});
+    window.onmouseup = () => cloneBoxes(num);
+}
+
+// when mouse down, apply mouseover event to all boxes, when mouse up, clone all the boxes, remove old ones, and put new ones in their place removing event listeners, then apply from start
+
+function addMouseOverEvent(num){
+    squaresColor.forEach(item => item.addEventListener('mouseover', ()=>item.setAttribute('style', `height:${num};width:${num};background-color:${currentColor()}`)));
+}
+
+function cloneBoxes(num){
+    let array = document.createElement('div');
+    while (squaresContainer.firstChild) {
+        array.appendChild(squaresContainer.firstChild.cloneNode(true));
+        squaresContainer.removeChild(squaresContainer.firstChild);
+    }
+    while (array.firstChild) {
+        squaresContainer.appendChild(array.firstChild.cloneNode(true));
+        array.removeChild(array.firstChild);
+    }
+    squaresColor = document.querySelectorAll(".just-the-square");
+    squaresColor.forEach(item=>{item.addEventListener('mousedown', ()=>{
+        addMouseOverEvent(num);
+        item.setAttribute('style', `height:${num};width:${num};background-color:${currentColor()}`);
+    } )});
 }
 
 function currentColor (){
