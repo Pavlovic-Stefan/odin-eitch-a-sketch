@@ -1,17 +1,16 @@
-let squaresContainer = document.querySelector(".squares-container");
+const squaresContainer = document.querySelector(".squares-container");
 const squaresSubContainer = document.createElement('div')
 const squares = document.createElement('div')
-const content = document.querySelector('.content');
 let lastArea = 16;
 let er = 0;
 let rain = 0;
+let colorStep = 25;
 let red = 250;
-let green = -50;
+let green = 0 - colorStep;
 let blue = 0;
 let r = 0;
 let g = 0;
 let b = 0;
-let colorStep = 25;
 let mouseState = false;
 
 function squareGenerator (numberOfSquares) {
@@ -21,7 +20,7 @@ function squareGenerator (numberOfSquares) {
     while (squaresContainer.firstChild) {
         squaresContainer.removeChild(squaresContainer.firstChild);
     }
-
+    // generates grid of wanted size with proper classes assigned
     squaresContainer.classList.add('squares-container-border')
     for (let i = 0 ; i < numberOfSquares ; i++) {
         const squaresSubContainer = document.createElement('div')
@@ -32,21 +31,24 @@ function squareGenerator (numberOfSquares) {
             squaresSubContainer.appendChild(squares).classList.add('just-the-square');
         }
     }
-    
-    window.onmousedown = () => mouseState = true;
-    window.onmouseup = () => mouseState = false;
-    squaresContainer.onmouseover = function (event){
-        let hoverTarget = event.target.closest('.just-the-square');
-        if (hoverTarget == null || hoverTarget.classList != 'just-the-square'){
-            return
-        } else {
-            if (mouseState){
-                hoverTarget.setAttribute('style', `height:${num};width:${num};background-color:${currentColor()}`);
-            }
-        }
+    window.onmousedown = (event) => {
+        mouseState = true;
+        eventTargetEvent(event, num);
     }
-    
+    window.onmouseup = () => mouseState = false;
+    squaresContainer.onmouseover = (event) => eventTargetEvent(event, num);
 };
+
+function eventTargetEvent(event, num){
+    let hoverTarget = event.target.closest('.just-the-square');
+    if (hoverTarget == null || hoverTarget.classList != 'just-the-square'){
+        return
+    } else {
+        if (mouseState){
+            hoverTarget.setAttribute('style', `height:${num};width:${num};background-color:${currentColor()}`);
+        }
+    }    
+}
 
 function currentColor (){
     let color = document.querySelector(".picker").value;
