@@ -1,6 +1,7 @@
-const squaresContainer = document.querySelector(".squares-container");
+let squaresContainer = document.querySelector(".squares-container");
 const squaresSubContainer = document.createElement('div')
 const squares = document.createElement('div')
+const content = document.querySelector('.content');
 let lastArea = 16;
 let er = 0;
 let rain = 0;
@@ -15,9 +16,11 @@ let colorStep = 25;
 function squareGenerator (numberOfSquares) {
     lastArea = numberOfSquares;
     let num = 640 / numberOfSquares - 1 + 'px';
+    // clears previously existing grid
     while (squaresContainer.firstChild) {
         squaresContainer.removeChild(squaresContainer.firstChild);
     }
+
     squaresContainer.classList.add('squares-container-border')
     for (let i = 0 ; i < numberOfSquares ; i++) {
         const squaresSubContainer = document.createElement('div')
@@ -27,38 +30,37 @@ function squareGenerator (numberOfSquares) {
             squaresSubContainer.appendChild(squares).setAttribute('style', `height:${num};width:${num};`)
             squaresSubContainer.appendChild(squares).classList.add('just-the-square');
         }
-
     }
+
     isolatedColor = currentColor;
-    squaresColor = document.querySelectorAll(".just-the-square");
-    squaresColor.forEach(item=>{item.addEventListener('mousedown', ()=>{
-        addMouseOverEvent(num);
-        item.setAttribute('style', `height:${num};width:${num};background-color:${currentColor()}`);
-    } )});
-    window.onmouseup = () => cloneBoxes(num);
-}
+    
+    applyEvents(num);
 
-// when mouse down, apply mouseover event to all boxes, when mouse up, clone all the boxes, remove old ones, and put new ones in their place removing event listeners, then apply from start
-
-function addMouseOverEvent(num){
-    squaresColor.forEach(item => item.addEventListener('mouseover', ()=>item.setAttribute('style', `height:${num};width:${num};background-color:${currentColor()}`)));
-}
-
-function cloneBoxes(num){
-    let array = document.createElement('div');
-    while (squaresContainer.firstChild) {
-        array.appendChild(squaresContainer.firstChild.cloneNode(true));
-        squaresContainer.removeChild(squaresContainer.firstChild);
+    window.onmouseup = () => {
+        let clone;
+        clone = squaresContainer.cloneNode(true)
+        content.removeChild(document.querySelector('.squares-container'));
+        content.append(clone) ;
+        squaresContainer = document.querySelector(".squares-container");
+        applyEvents(num);
     }
-    while (array.firstChild) {
-        squaresContainer.appendChild(array.firstChild.cloneNode(true));
-        array.removeChild(array.firstChild);
+};
+
+
+function applyEvents(num){
+    squaresContainer.onmousedown = function(event){
+        let target = event.target.closest('.just-the-square');
+        if (target.classList != 'just-the-square') {
+            return;
+        } else {
+            target.setAttribute('style', `height:${num};width:${num};background-color:${currentColor()}`);
+            squaresContainer.onmouseover = function (event){
+                let hoverTarget = event.target.closest('.just-the-square');
+                if (hoverTarget == null || hoverTarget.classList != 'just-the-square'){return} else {
+                hoverTarget.setAttribute('style', `height:${num};width:${num};background-color:${currentColor()}`);}
+            }
+        }  
     }
-    squaresColor = document.querySelectorAll(".just-the-square");
-    squaresColor.forEach(item=>{item.addEventListener('mousedown', ()=>{
-        addMouseOverEvent(num);
-        item.setAttribute('style', `height:${num};width:${num};background-color:${currentColor()}`);
-    } )});
 }
 
 function currentColor (){
