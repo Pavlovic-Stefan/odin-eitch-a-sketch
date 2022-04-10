@@ -32,8 +32,6 @@ function squareGenerator (numberOfSquares) {
             squaresSubContainer.appendChild(squares).classList.add('just-the-square');
         }
     }
-
-    isolatedColor = currentColor;
     
     window.onmousedown = () => mouseState = true;
     window.onmouseup = () => mouseState = false;
@@ -84,8 +82,6 @@ function currentColor (){
     }
     return color;
 }
-
-let isolatedColor = currentColor()
 
 const clear = document.querySelector('.clear');
 clear.addEventListener('click', ()=>squareGenerator(lastArea));
