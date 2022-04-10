@@ -12,6 +12,7 @@ let r = 0;
 let g = 0;
 let b = 0;
 let colorStep = 25;
+let mouseState = false;
 
 function squareGenerator (numberOfSquares) {
     lastArea = numberOfSquares;
@@ -34,34 +35,20 @@ function squareGenerator (numberOfSquares) {
 
     isolatedColor = currentColor;
     
-    applyEvents(num);
-
-    window.onmouseup = () => {
-        let clone;
-        clone = squaresContainer.cloneNode(true)
-        content.removeChild(document.querySelector('.squares-container'));
-        content.append(clone) ;
-        squaresContainer = document.querySelector(".squares-container");
-        applyEvents(num);
-    }
-};
-
-
-function applyEvents(num){
-    squaresContainer.onmousedown = function(event){
-        let target = event.target.closest('.just-the-square');
-        if (target.classList != 'just-the-square') {
-            return;
+    window.onmousedown = () => mouseState = true;
+    window.onmouseup = () => mouseState = false;
+    squaresContainer.onmouseover = function (event){
+        let hoverTarget = event.target.closest('.just-the-square');
+        if (hoverTarget == null || hoverTarget.classList != 'just-the-square'){
+            return
         } else {
-            target.setAttribute('style', `height:${num};width:${num};background-color:${currentColor()}`);
-            squaresContainer.onmouseover = function (event){
-                let hoverTarget = event.target.closest('.just-the-square');
-                if (hoverTarget == null || hoverTarget.classList != 'just-the-square'){return} else {
-                hoverTarget.setAttribute('style', `height:${num};width:${num};background-color:${currentColor()}`);}
+            if (mouseState){
+                hoverTarget.setAttribute('style', `height:${num};width:${num};background-color:${currentColor()}`);
             }
-        }  
+        }
     }
-}
+    
+};
 
 function currentColor (){
     let color = document.querySelector(".picker").value;
