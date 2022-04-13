@@ -95,9 +95,6 @@ size.addEventListener('click', ()=>squareGenerator(range.value));
 const colorButton = document.querySelector('.color');
 colorButton.addEventListener('click', ()=>{er=0; rain=0});
 
-let squaresColor = document.querySelectorAll(".just-the-square");
-squaresColor.forEach(item=>{item.addEventListener('click', () => {console.log(1)})});
-
 const eraser = document.querySelector('.eraser');
 eraser.addEventListener('click', ()=>{er=1; rain=0});
 
